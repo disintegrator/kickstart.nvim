@@ -1044,6 +1044,7 @@ require('lazy').setup({
   },
   {
     'akinsho/bufferline.nvim',
+    event = 'VeryLazy',
     version = '*',
     dependencies = 'nvim-tree/nvim-web-devicons',
     keys = {
@@ -1059,7 +1060,17 @@ require('lazy').setup({
       { '[B', '<cmd>BufferLineMovePrev<cr>', desc = 'Move buffer prev' },
       { ']B', '<cmd>BufferLineMoveNext<cr>', desc = 'Move buffer next' },
     },
-    config = true,
+    config = function(_, opts)
+      require('bufferline').setup(opts)
+      -- Fix bufferline when restoring a session
+      vim.api.nvim_create_autocmd({ 'BufAdd', 'BufDelete' }, {
+        callback = function()
+          vim.schedule(function()
+            pcall(nvim_bufferline)
+          end)
+        end,
+      })
+    end,
   },
 
   { -- Collection of various small independent plugins/modules
