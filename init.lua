@@ -113,7 +113,7 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = vim.env.SSH_TTY and '' or 'unnamedplus'
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -1062,6 +1062,8 @@ require('lazy').setup({
     version = '*',
     dependencies = 'nvim-tree/nvim-web-devicons',
     keys = {
+      { '<leader>bd', '<Cmd>bd<CR>', desc = 'Delete buffer' },
+      { '<leader>bD', '<Cmd>bd!<CR>', desc = 'Delete buffer (force)' },
       { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle Pin' },
       { '<leader>bP', '<Cmd>BufferLineGroupClose ungrouped<CR>', desc = 'Delete Non-Pinned Buffers' },
       { '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', desc = 'Delete Other Buffers' },
