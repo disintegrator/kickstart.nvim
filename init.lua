@@ -561,6 +561,16 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'marilari88/twoslash-queries.nvim',
+    config = function()
+      require('twoslash-queries').setup {
+        multi_line = true,
+        is_enabled = true,
+      }
+    end,
+  },
+
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -728,7 +738,11 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {},
+        tsserver = {
+          on_attach = function(client, bufnr)
+            require('twoslash-queries').attach(client, bufnr)
+          end,
+        },
 
         lua_ls = {
           -- cmd = {...},
