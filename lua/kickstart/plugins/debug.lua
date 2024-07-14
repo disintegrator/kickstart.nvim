@@ -14,8 +14,8 @@ return {
   desc = 'Debugging support. Requires language specific adapters to be configured.',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'rcarriga/nvim-dap-ui',
     'nvim-neotest/nvim-nio',
+    'rcarriga/nvim-dap-ui',
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
     'leoluz/nvim-dap-go',
@@ -44,6 +44,8 @@ return {
       },
     }
 
+    dapui.setup()
+
     -- stylua: ignore
     local bind = function ()
       vim.keymap.set("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, { desc = "Breakpoint Condition" })
@@ -67,9 +69,18 @@ return {
     end
     bind()
 
-    dap.listeners.after.event_initialized['dapui_config'] = dapui.open
-    dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-    dap.listeners.before.event_exited['dapui_config'] = dapui.close
+    dap.listeners.before.attach.dapui_config = function()
+      dapui.open()
+    end
+    dap.listeners.before.launch.dapui_config = function()
+      dapui.open()
+    end
+    dap.listeners.before.event_terminated.dapui_config = function()
+      dapui.close()
+    end
+    dap.listeners.before.event_exited.dapui_config = function()
+      dapui.close()
+    end
 
     -- Install golang specific config
     require('dap-go').setup {

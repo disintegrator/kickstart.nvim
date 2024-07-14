@@ -5,8 +5,8 @@ return {
     'nvim-lua/plenary.nvim',
     'antoinemadec/FixCursorHold.nvim',
     'nvim-treesitter/nvim-treesitter',
-    'fredrikaverpil/neotest-golang',
     'leoluz/nvim-dap-go',
+    'fredrikaverpil/neotest-golang',
   },
     -- stylua: ignore
     keys = {
@@ -21,13 +21,26 @@ return {
       { "<leader>tS", function() require("neotest").run.stop() end, desc = "Stop" },
       { "<leader>tw", function() require("neotest").watch.toggle(vim.fn.expand("%")) end, desc = "Toggle Watch" },
     },
-  opts = {
-    adapters = {
-      ['neotest-golang'] = {
-        -- Here we can set options for neotest-golang, e.g.
-        -- go_test_args = { "-v", "-race", "-count=1", "-timeout=60s" },
-        dap_go_enabled = true, -- requires leoluz/nvim-dap-go
+  config = function()
+    ---@diagnostic disable-next-line: missing-fields
+    require('neotest').setup {
+      discovery = {
+        enabled = false,
+        concurrent = 1,
       },
-    },
-  },
+      ---@diagnostic disable-next-line: missing-fields
+      summary = {
+        animated = true,
+        expand_errors = true,
+      },
+      running = {
+        concurrent = true,
+      },
+      adapters = {
+        require 'neotest-golang' {
+          dap_go_enabled = true,
+        },
+      },
+    }
+  end,
 }

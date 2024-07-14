@@ -254,7 +254,7 @@ require('lazy').setup({
   require 'kickstart.plugins.mini',
   require 'kickstart.plugins.todos',
   require 'kickstart.plugins.terminal',
-  'tpope/vim-sleuth',
+  require 'kickstart.plugins.spectre',
   'numToStr/Comment.nvim',
   'pocco81/high-str.nvim',
   { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
