@@ -7,8 +7,8 @@ return {
     { 'nvim-tree/nvim-web-devicons' },
   },
   keys = {
-    { '<leader>bd', '<Cmd>Bdelete<CR>', desc = 'Delete buffer' },
-    { '<leader>bD', '<Cmd>Bdelete!<CR>', desc = 'Delete buffer (force)' },
+    { '<leader>q', '<Cmd>Bdelete<CR>', desc = 'Delete buffer' },
+    { '<leader>Q', '<Cmd>Bdelete!<CR>', desc = 'Delete buffer (force)' },
     { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle Pin' },
     { '<leader>bP', '<Cmd>BufferLineGroupClose ungrouped<CR>', desc = 'Delete Non-Pinned Buffers' },
     { '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', desc = 'Delete Other Buffers' },

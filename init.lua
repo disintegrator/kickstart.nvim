@@ -175,6 +175,9 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- save file
+vim.keymap.set('n', '<leader>w', '<cmd>w<cr>', { desc = 'Save file' })
+
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
@@ -255,8 +258,8 @@ require('lazy').setup({
   require 'kickstart.plugins.todos',
   require 'kickstart.plugins.terminal',
   require 'kickstart.plugins.spectre',
+  require 'kickstart.plugins.highlight',
   'numToStr/Comment.nvim',
-  'pocco81/high-str.nvim',
   { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
