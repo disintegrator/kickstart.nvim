@@ -7,6 +7,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     'leoluz/nvim-dap-go',
     'fredrikaverpil/neotest-golang',
+    'nvim-neotest/neotest-python',
   },
     -- stylua: ignore
     keys = {
@@ -40,6 +41,7 @@ return {
         require 'neotest-golang' {
           dap_go_enabled = true,
         },
+        require 'neotest-python',
       },
     }
   end,

@@ -51,6 +51,7 @@ return {
       vim.keymap.set("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, { desc = "Breakpoint Condition" })
       vim.keymap.set("n",  "<leader>db", function() dap.toggle_breakpoint() end, { desc = "Toggle Breakpoint" })
       vim.keymap.set("n",  "<leader>dc", function() dap.continue() end, { desc = "Continue" })
+      vim.keymap.set("n",  "<leader>dd", function() dapui.toggle() end, { desc = "Toggle UI" })
       vim.keymap.set("n",  "<leader>da", function() dap.continue({ before = get_args }) end, { desc = "Run with Args" })
       vim.keymap.set("n",  "<leader>dC", function() dap.run_to_cursor() end, { desc = "Run to Cursor" })
       vim.keymap.set("n",  "<leader>dg", function() dap.goto_() end, { desc = "Go to Line (No Execute)" })
@@ -65,7 +66,6 @@ return {
       vim.keymap.set("n",  "<leader>ds", function() dap.session() end, { desc = "Session" })
       vim.keymap.set("n",  "<leader>dt", function() dap.terminate() end, { desc = "Terminate" })
       vim.keymap.set("n",  "<leader>dw", function() widgets.hover() end, { desc = "Widgets" })
-      vim.keymap.set("n",  "<leader>d-", function() dapui.toggle() end, { desc = "See last session result." })
     end
     bind()
 
@@ -75,12 +75,12 @@ return {
     dap.listeners.before.launch.dapui_config = function()
       dapui.open()
     end
-    dap.listeners.before.event_terminated.dapui_config = function()
-      dapui.close()
-    end
-    dap.listeners.before.event_exited.dapui_config = function()
-      dapui.close()
-    end
+    -- dap.listeners.before.event_terminated.dapui_config = function()
+    --   dapui.close()
+    -- end
+    -- dap.listeners.before.event_exited.dapui_config = function()
+    --   dapui.close()
+    -- end
 
     -- Install golang specific config
     require('dap-go').setup {

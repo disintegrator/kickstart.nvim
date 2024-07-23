@@ -8,4 +8,7 @@ return {
     { "<leader>sw", function() require("spectre").open_visual({select_word=true}) end, desc = '[S]earch current [W]ord' },
     { mode="v", "<leader>sw", function() require("spectre").open_visual() end, desc = 'Visual [S]earch current [W]ord' },
   },
+  opts = {
+    is_insert_mode = true,
+  },
 }
