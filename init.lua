@@ -244,6 +244,7 @@ require('lazy').setup({
   require 'kickstart.plugins.flash',
   require 'kickstart.plugins.git',
   require 'kickstart.plugins.which-key',
+  require 'kickstart.plugins.pickers',
   require 'kickstart.plugins.telescope',
   require 'kickstart.plugins.lsp',
   require 'kickstart.plugins.trouble',
