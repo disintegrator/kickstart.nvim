@@ -237,6 +237,7 @@ vim.opt.colorcolumn = '80'
 --
 -- PLUGINS
 require('lazy').setup({
+  require 'kickstart.plugins.pickers',
   require 'kickstart.plugins.colorscheme',
   require 'kickstart.plugins.dashboard',
   require 'kickstart.plugins.bufferline',
@@ -248,6 +249,7 @@ require('lazy').setup({
   require 'kickstart.plugins.telescope',
   require 'kickstart.plugins.lsp',
   require 'kickstart.plugins.trouble',
+  require 'kickstart.plugins.ai',
   require 'kickstart.plugins.completion',
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.testing',

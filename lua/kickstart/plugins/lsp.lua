@@ -8,17 +8,22 @@ return {
     { 'folke/neodev.nvim', opts = {} },
   },
   config = function()
+    local fzf = require 'fzf-lua'
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
         local map = function(keys, func, desc)
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
-        map('gd', require('fzf-lua').lsp_definitions, '[G]oto [D]efinition')
-        map('gr', require('fzf-lua').lsp_references, '[G]oto [R]eferences')
-        map('gI', require('fzf-lua').lsp_implementations, '[G]oto [I]mplementation')
-        map('<leader>D', require('fzf-lua').lsp_typedefs, 'Type [D]efinition')
-        map('<leader>ds', require('fzf-lua').lsp_document_symbols, '[D]ocument [S]ymbols')
+        -- stylua: ignore
+        map('gd', function() fzf.lsp_definitions({jump_to_single_result = true}) end, '[G]oto [D]efinition')
+        -- stylua: ignore
+        map('gr', function() fzf.lsp_references({jump_to_single_result = true}) end, '[G]oto [R]eferences')
+        -- stylua: ignore
+        map('gI', function() fzf.lsp_implementations({jump_to_single_result = true}) end, '[G]oto [I]mplementation')
+        -- stylua: ignore
+        map('<leader>D', function() fzf.lsp_typedefs({jump_to_single_result = true}) end, 'Type [D]efinition')
+        map('<leader>ds', fzf.lsp_document_symbols, '[D]ocument [S]ymbols')
         --map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
         map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
