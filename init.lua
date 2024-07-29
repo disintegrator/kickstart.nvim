@@ -262,6 +262,8 @@ require('lazy').setup({
   require 'kickstart.plugins.terminal',
   require 'kickstart.plugins.spectre',
   require 'kickstart.plugins.highlight',
+  require 'kickstart.plugins.ui',
+  require 'kickstart.plugins.scratch',
   'numToStr/Comment.nvim',
   { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
 
