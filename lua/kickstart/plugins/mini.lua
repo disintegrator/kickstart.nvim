@@ -16,6 +16,24 @@ return { -- Collection of various small independent plugins/modules
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require('mini.surround').setup()
 
+    -- Show indentation levels
+    require('mini.indentscope').setup()
+    --
+    -- Move any selection in any direction
+    require('mini.move').setup {
+      mappings = {
+        left = '',
+        right = '',
+        down = '<M-j>',
+        up = '<M-k>',
+
+        line_left = '',
+        line_right = '',
+        line_down = '<M-j>',
+        line_up = '<M-k>',
+      },
+    }
+
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
     --  and try some other statusline plugin
