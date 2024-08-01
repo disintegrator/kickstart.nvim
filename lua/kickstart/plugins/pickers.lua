@@ -1,7 +1,19 @@
 return {
   'ibhagwan/fzf-lua',
   config = function()
-    require('fzf-lua').setup { 'max-perf' }
+    require('fzf-lua').setup {
+      'max-perf',
+      winopts = {
+        preview = {
+          horizontal = 'right:50%',
+        },
+      },
+      files = {
+        formatter = 'path.filename_first',
+        cwd_prompt = false,
+        fzf_opts = { ['--ansi'] = true },
+      },
+    }
     local fzf = require 'fzf-lua'
 
     -- stylua: ignore
