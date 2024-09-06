@@ -154,6 +154,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Open files without folding contents initially
+vim.opt.foldenable = false
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -237,6 +240,7 @@ vim.opt.colorcolumn = '80'
 --
 -- PLUGINS
 require('lazy').setup({
+  require 'kickstart.plugins.multicursor',
   require 'kickstart.plugins.pickers',
   require 'kickstart.plugins.colorscheme',
   require 'kickstart.plugins.dashboard',
@@ -263,9 +267,10 @@ require('lazy').setup({
   require 'kickstart.plugins.spectre',
   require 'kickstart.plugins.highlight',
   require 'kickstart.plugins.ui',
+  require 'kickstart.plugins.statusline',
   require 'kickstart.plugins.scratch',
+  require 'kickstart.plugins.glow',
   'numToStr/Comment.nvim',
-  { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.

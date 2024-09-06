@@ -12,7 +12,7 @@ return {
       ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
       ['<leader>t'] = { name = '[T]est', _ = 'which_key_ignore' },
       ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
-      ['<leader>H'] = { name = '[H]ighlight', _ = 'which_key_ignore' },
+      ['<leader>j'] = { name = 'Highlight', _ = 'which_key_ignore' },
     }
     require('which-key').register({
       ['<leader>h'] = { 'Git [H]unk' },

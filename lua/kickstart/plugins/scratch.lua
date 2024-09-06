@@ -5,6 +5,7 @@ return {
   config = function()
     local scretch = require 'scretch'
     scretch.setup {
+      scretch_dir = vim.env.HOME .. '/scretch/',
       backend = 'fzf-lua', -- also accpets "fzf-lua"
     }
     -- stylua: ignore
